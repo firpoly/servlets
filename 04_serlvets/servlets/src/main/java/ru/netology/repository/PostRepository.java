@@ -6,7 +6,7 @@ import java.util.*;
 
 // Stub
 public class PostRepository {
-    private Map<Long, Post> hashmap = new HashMap<Long, Post>();
+    private final Map<Long, Post> hashmap = new HashMap<Long, Post>();
     public static volatile Long POST_COUNT = 1L;
 
     public List<Post> all() {
@@ -41,7 +41,7 @@ public class PostRepository {
     }
 
     public void removeById(long id) {
-        var hashmapTemp = Optional.ofNullable(id);
+        var hashmapTemp = Optional.ofNullable(hashmap.get(id));
         if (hashmapTemp.isPresent())
             hashmap.remove(id);
     }
